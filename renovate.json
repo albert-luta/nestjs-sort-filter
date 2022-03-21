@@ -1,0 +1,18 @@
+{
+  "extends": ["config:base"],
+  "semanticCommits": "enabled",
+  "reviewers": ["@lutaalbert"],
+  "packageRules": [
+    {
+      "groupName": "non-major",
+      "matchUpdateTypes": ["minor", "patch"],
+      "matchCurrentVersion": "!/^0/",
+      "automerge": true,
+      "schedule": ["before 8am"]
+    }
+  ],
+  "lockFileMaintenance": {
+    "enabled": true,
+    "automerge": true
+  }
+}

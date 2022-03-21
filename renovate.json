@@ -8,11 +8,12 @@
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
       "automerge": true,
-      "schedule": ["before 8am"]
+      "schedule": ["before 2am"]
     }
   ],
   "lockFileMaintenance": {
     "enabled": true,
-    "automerge": true
+    "automerge": true,
+    "schedule": ["before 5am"]
   }
 }

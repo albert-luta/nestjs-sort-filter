@@ -1,20 +1,23 @@
 {
   "extends": ["config:base"],
   "semanticCommits": "enabled",
+  "dependencyDashboard": true,
   "reviewers": ["@lutaalbert"],
   "timezone": "Europe/Bucharest",
+  "schedule": [
+    "after 10pm every weekday",
+    "before 5am every weekday",
+    "every weekend"
+  ],
   "packageRules": [
     {
-      "groupName": "non-major",
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
-      "automerge": true,
-      "schedule": ["before 2am"]
+      "automerge": true
     }
   ],
   "lockFileMaintenance": {
     "enabled": true,
-    "automerge": true,
-    "schedule": ["before 5am"]
+    "automerge": true
   }
 }

@@ -1,0 +1,9 @@
+{
+  "*.{json,yml,yaml}": ["prettier --write"],
+  "*.{js,ts}": [
+    "eslint --cache --fix",
+    "bash -c tsc --noEmit",
+    "jest --bail --findRelatedTests",
+    "prettier --write"
+  ]
+}

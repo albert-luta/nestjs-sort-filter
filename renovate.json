@@ -9,15 +9,26 @@
     "before 5am every weekday",
     "every weekend"
   ],
+  "labels": ["dependency"],
+  "vulnerabilityAlerts": {
+    "labels": ["security"],
+    "automerge": true
+  },
+  "lockFileMaintenance": {
+    "labels": ["lock-file"]
+  },
+  "pin": {
+    "labels": ["pin"]
+  },
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
       "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["lockFileMaintenance", "pin"],
+      "automerge": true
     }
-  ],
-  "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true
-  }
+  ]
 }

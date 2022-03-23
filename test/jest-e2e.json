@@ -8,6 +8,7 @@
   },
   "globals": {
     "ts-jest": {
+      "tsconfig": "tsconfig.test.json",
       "astTransformers": {
         "before": ["test/swagger-e2e.js"]
       }

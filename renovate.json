@@ -15,7 +15,12 @@
     "automerge": true
   },
   "lockFileMaintenance": {
-    "labels": ["lock file maintenance"]
+    "labels": ["lock file maintenance"],
+    "schedule": [
+      "after 10pm every weekday",
+      "before 5am every weekday",
+      "every weekend"
+    ]
   },
   "pin": {
     "labels": ["pin"]

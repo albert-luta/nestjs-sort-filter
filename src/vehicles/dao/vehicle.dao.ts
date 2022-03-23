@@ -1,5 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { BaseDao } from 'src/common/base/base.dao';
+import { SortUtils } from 'src/common/utils/sort.utils';
+import { FindAllVehiclesQueryDto } from '../dto/find-all-vehicles.query.dto';
 import { Vehicle } from '../entities/vehicle.entity';
 import { vehiclesMock } from '../vehicles.mock';
 
@@ -7,6 +9,8 @@ import { vehiclesMock } from '../vehicles.mock';
 export class VehicleDao implements BaseDao<Vehicle> {
   private vehicles: Vehicle[] = vehiclesMock;
   private maxId: number = vehiclesMock.length;
+
+  constructor(private readonly sortUtils: SortUtils) {}
 
   create(data: Omit<Vehicle, 'id'>): Vehicle {
     const vehicle: Vehicle = {
@@ -18,8 +22,14 @@ export class VehicleDao implements BaseDao<Vehicle> {
     return vehicle;
   }
 
-  findAll(): Vehicle[] {
-    return this.vehicles;
+  findAll({ sort }: FindAllVehiclesQueryDto): Vehicle[] {
+    let vehicles = [...this.vehicles];
+
+    if (sort) {
+      vehicles = this.sortUtils.sortByMultipleFields(vehicles, sort);
+    }
+
+    return vehicles;
   }
 
   remove(id: number): Vehicle {

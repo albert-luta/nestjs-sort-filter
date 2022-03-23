@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { VehicleDao } from './dao/vehicle.dao';
 import { CreateVehicleDto } from './dto/create-vehicle.dto';
+import { FindAllVehiclesQueryDto } from './dto/find-all-vehicles.query.dto';
 import { Vehicle } from './entities/vehicle.entity';
 
 @Injectable()
@@ -11,8 +12,8 @@ export class VehiclesService {
     return this.vehicleDao.create(createVehicleDto);
   }
 
-  findAll(): Vehicle[] {
-    return this.vehicleDao.findAll();
+  findAll(query: FindAllVehiclesQueryDto): Vehicle[] {
+    return this.vehicleDao.findAll(query);
   }
 
   remove(id: number): Vehicle {

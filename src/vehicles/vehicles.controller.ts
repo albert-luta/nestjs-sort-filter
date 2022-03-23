@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  Delete,
+  Query,
+} from '@nestjs/common';
 import { VehiclesService } from './vehicles.service';
 import { CreateVehicleDto } from './dto/create-vehicle.dto';
 import {
@@ -7,6 +15,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { Vehicle } from './entities/vehicle.entity';
+import { FindAllVehiclesQueryDto } from './dto/find-all-vehicles.query.dto';
 
 @ApiTags('vehicles')
 @Controller('vehicles')
@@ -20,8 +29,9 @@ export class VehiclesController {
   }
 
   @Get()
-  findAll(): Vehicle[] {
-    return this.vehiclesService.findAll();
+  @ApiBadRequestResponse()
+  findAll(@Query() query: FindAllVehiclesQueryDto): Vehicle[] {
+    return this.vehiclesService.findAll(query);
   }
 
   @Delete(':id')

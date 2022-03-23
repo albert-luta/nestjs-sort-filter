@@ -15,7 +15,7 @@
     "automerge": true
   },
   "lockFileMaintenance": {
-    "labels": ["lock-file"]
+    "labels": ["lock file maintenance"]
   },
   "pin": {
     "labels": ["pin"]

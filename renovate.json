@@ -1,7 +1,6 @@
 {
   "extends": ["config:base"],
   "semanticCommits": "enabled",
-  "dependencyDashboard": true,
   "reviewers": ["@lutaalbert"],
   "timezone": "Europe/Bucharest",
   "schedule": [
@@ -16,23 +15,17 @@
   },
   "lockFileMaintenance": {
     "labels": ["lock file maintenance"],
-    "schedule": [
-      "after 10pm every weekday",
-      "before 5am every weekday",
-      "every weekend"
-    ]
+    "enabled": true,
+    "automerge": true
   },
   "pin": {
-    "labels": ["pin"]
+    "labels": ["pin"],
+    "automerge": true
   },
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
       "matchCurrentVersion": "!/^0/",
-      "automerge": true
-    },
-    {
-      "matchUpdateTypes": ["lockFileMaintenance", "pin"],
       "automerge": true
     }
   ]

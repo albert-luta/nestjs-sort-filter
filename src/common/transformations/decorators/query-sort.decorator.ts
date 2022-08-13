@@ -5,7 +5,7 @@ import { TransformQuerySortToObject } from './transform-query-sort-to-object.dec
 import { TransformQueryToArray } from './transform-query-to-array.decorator';
 
 export const QuerySort = <T extends Record<keyof T, unknown>>(
-  acceptedFields: (keyof T)[],
+  acceptedFields: Record<keyof T, true>,
 ) => {
   return applyDecorators(
     // Transform single string value to array

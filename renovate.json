@@ -3,30 +3,33 @@
   "semanticCommits": "enabled",
   "reviewers": ["@lutaalbert"],
   "timezone": "Europe/Bucharest",
-  "schedule": [
-    "after 10pm every weekday",
-    "before 5am every weekday",
-    "every weekend"
-  ],
-  "labels": ["dependency"],
+  "schedule": ["before 6am on saturday"],
+  "labels": ["dependencies bumps"],
+  "automerge": true,
   "vulnerabilityAlerts": {
-    "labels": ["security"],
-    "automerge": true
+    "labels": ["security"]
   },
   "lockFileMaintenance": {
     "labels": ["lock file maintenance"],
-    "enabled": true,
-    "automerge": true
+    "enabled": true
   },
   "pin": {
-    "labels": ["pin"],
-    "automerge": true
+    "labels": ["packages pins"]
   },
   "packageRules": [
     {
-      "matchUpdateTypes": ["minor", "patch"],
-      "matchCurrentVersion": "!/^0/",
-      "automerge": true
+      "groupName": "devDependencies (non-major)",
+      "matchDepTypes": ["devDependencies"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "dependencies (non-major)",
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "automerge": false
     }
   ]
 }
